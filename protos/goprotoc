@@ -5,7 +5,7 @@ array=()
 if [ $1 ]; then
     if [ -e $1 ]; then
         if [ -d $1 ]; then
-            array=`find $1 -name *.proto`
+            array=`find $1 -name '*.proto'`
         elif [ -f $1 ]; then
             a=$(expr $1 : '.*\.proto$')
             if [ ${a} != 0 ]; then
@@ -14,7 +14,7 @@ if [ $1 ]; then
         fi
     fi
 else
-    array=`find . -name *.proto`
+    array=`find . -name '*.proto'`
 fi
 
 for path in ${array[*]}; do
