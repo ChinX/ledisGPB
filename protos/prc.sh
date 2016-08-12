@@ -1,34 +1,24 @@
 #!/bin/bash
 echo ''
 echo 'File to go protobuf'
-echo ''
-protoGoFile(){
-    protoc --go_out=../models/ $1
-}
-
-rangeDir(){
-    for path in `ls $1 |grep .proto`; do
-        if [ -d ${path} ]; then
-            echo 'TODO: This is a dir'
-            #rangeDir ${path}
-        else
-            protoGoFile ${path}
-        fi
-    done
-}
-
+array=()
 if [ $1 ]; then
     if [ -e $1 ]; then
         if [ -d $1 ]; then
-            echo 'TODO: This is a dir'
-        else
-            protoGoFile $1
+            array=`find $1 -name *.proto`
+        elif [ -f $1 ]; then
+            a=$(expr $1 : '.*\.proto$')
+            if [ ${a} != 0 ]; then
+                array=($1)
+            fi
         fi
     fi
 else
-    rangeDir `pwd`
+    array=`find . -name *.proto`
 fi
 
-echo ''
+for path in ${array[*]}; do
+    protoc --go_out=../models ${path}
+done
 echo 'All jobs done'
 echo ''
