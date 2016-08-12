@@ -18,7 +18,7 @@ else
 fi
 
 for path in ${array[*]}; do
-    protoc --go_out=../models ${path}
+    protoc --go_out=../protos ${path}
 done
 echo 'All jobs done'
 echo ''

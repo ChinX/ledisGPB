@@ -19,7 +19,7 @@ const (
 func main() {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
-	kind := jsonKind
+	kind := protoKind
 
 	var inBytes []byte
 
@@ -33,9 +33,10 @@ func main() {
 	defer db.Close()
 
 	msg := &models.Msg{
-		MsgType: proto.Int32(1),
-		MsgInfo: proto.String("I am chan"),
-		MsgFrom: proto.String("127.0.0.1"),
+		MsgType: 1,
+		MsgInfo: "I am chan",
+		MsgFrom: "127.0.0.1",
+		MsgData: "chan",
 	}
 
 	if kind == jsonKind {
