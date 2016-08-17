@@ -7,9 +7,14 @@ Package protos is a generated protocol buffer package.
 
 It is generated from these files:
 	msg.proto
+	pipeline.proto
+	stage.proto
 
 It has these top-level messages:
 	Msg
+	Pipeline
+	Stage
+	StageResult
 */
 package protos
 

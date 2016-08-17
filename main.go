@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/chinx/ledisGPB/models"
+	"github.com/chinx/ledisGPB/protos"
 	"github.com/golang/protobuf/proto"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/opt"
@@ -32,11 +32,10 @@ func main() {
 	}
 	defer db.Close()
 
-	msg := &models.Msg{
+	msg := &protos.Msg{
 		MsgType: 1,
 		MsgInfo: "I am chan",
 		MsgFrom: "127.0.0.1",
-		MsgData: "chan",
 	}
 
 	if kind == jsonKind {
@@ -62,7 +61,7 @@ func main() {
 		return
 	}
 
-	msgInfo := &models.Msg{}
+	msgInfo := &protos.Msg{}
 	if kind == jsonKind {
 		err = json.Unmarshal(outBytes, msgInfo)
 	} else {

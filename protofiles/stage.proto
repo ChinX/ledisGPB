@@ -1,0 +1,27 @@
+syntax = "proto3";
+package protos;
+message stage
+{
+    string namespace = 1;
+    string pipelineName = 2;
+    string name = 3;
+    uint64 replicas = 4;
+    string dependence = 5;
+    string checkUrl = 6;
+    uint64 checkInterval = 7;
+    uint64 checkCount = 8;
+    string image = 9;
+    uint64 port = 10;
+    string envName = 11;
+    string envValue = 12;
+    string status = 13;
+}
+
+message stageResult
+{
+    string namespace = 1;
+    string id = 2;
+    string name = 3;
+    string result = 4;
+    string detail = 5;
+}

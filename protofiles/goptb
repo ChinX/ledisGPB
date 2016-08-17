@@ -1,0 +1,10 @@
+#!/bin/bash
+echo ''
+echo 'File to go protobuf'
+if [ $1 ] && [ -f $1 ] && [ -e $1 ]; then
+    protoc --go_out=../protos $1
+else
+    protoc --go_out=../protos *.proto
+fi
+echo 'All jobs done'
+echo ''

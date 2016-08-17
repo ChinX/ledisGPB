@@ -1,0 +1,24 @@
+syntax = "proto3";
+import "stage.proto";
+package protos;
+message pipeline
+{
+    enum Flavour {
+        SWEET = 0;
+        SOUR = 1;
+        UMAMI = 2;
+        GOPHERLICIOUS = 3;
+    }
+    string namespace = 1;
+    string name = 2;
+    string selfLink = 3;
+    string creation = 4;
+    string deletion = 5;
+    uint64 timeout = 6;
+    map<string, string> labels = 7;
+    map<string, string> annotations = 8;
+    repeated int32 numList = 9;
+    repeated stage stages = 10;
+    string status = 11;
+    repeated int64 unpacked = 12 [packed=false];
+}
