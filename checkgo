@@ -35,5 +35,9 @@ echo 'Golint ./... |grep -v vendor/'
 golint ./... |grep -v vendor/
 
 echo ''
+echo 'Go build'
+go build
+
+echo ''
 echo 'Check go all jobs done!!!'
 echo ''
