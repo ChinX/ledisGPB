@@ -18,8 +18,7 @@ for path in `go list ./... | grep -v vendor`; do
         fi
         continue
     fi
-    gofmt -w ${newPath}
-    goimports -w ${newPath}
+    goreturns -w ${newPath}
 done
 for item in ${fileArr[*]}; do
     change=`echo ${item} | sed 's#\/#\\\/#g'`
